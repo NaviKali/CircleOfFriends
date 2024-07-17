@@ -98,7 +98,7 @@ if (!function_exists("Success")) {
          */
         function Success(string $message, array|object $data = [], string $function = '')
         {
-                echo Tool::Message(200, $message, $data, func: $function);
+                return Tool::Message(200, $message, $data, func: $function);
         }
 }
 /**

@@ -32,7 +32,7 @@ class SQL
                         /* 数据库端口 */
                         "SQLPort" => 27017,
                         /* 数据库名称 */
-                        "SQLDatabaseName" => "demo",
+                        "SQLDatabaseName" => "CircleOfFriends",
                 ];
         /**
          * MySQL数据库配置

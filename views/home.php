@@ -1,25 +1,17 @@
-<!DOCTYPE html>
-        <html lang="en">
-        <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>[云梦]Home</title>
-                
-        </head>
-        <body>
-<link rel='stylesheet' href='http://localhost:8080/public/static/css/bootstrap.min.css'>
-<link rel='stylesheet' href='http://localhost:8080/public/static/css/index.css'>
-<link rel='stylesheet' href='http://localhost:8080/public/static/css/home.css'>
+[Start]
+@link{#css#bootstrap.min.css}link@
+@link{#css#index.css}link@
+@link{#css#home.css}link@
 
 <div class="Home-Block">
     <!-- 左边导航栏 -->
     <div class="Top-Nav">
-        <p class="Nav-Title"><?php	echo $TK["NavTitle"];	?></p>
+        <p class="Nav-Title">$-TK["NavTitle"]-$</p>
         <ul class="nav nav-pills flex-column">
-            <?php	foreach($TK["MenuList"] as $k => $v){
+            @foreach($TK["MenuList"] as $k => $v){
             if($v->children == []){
             echo ' <li class="nav-item">
-                <img src="http://localhost:8080/public/upload/'.$v->menu_icon.'" alt="">
+                <img src="#img#'.$v->menu_icon.'" alt="">
                 <a class="nav-link" href=".'.$v->menu_to.'">'.$v->menu_name.'</a>
             </li>';
             }else
@@ -28,20 +20,20 @@
             foreach($v->children as $children_k => $children_v)
             {
             $con.='<li>
-                <img src="http://localhost:8080/public/upload/'.$children_v->menu_icon.'" alt="">
+                <img src="#img#'.$children_v->menu_icon.'" alt="">
                 <a class="dropdown-item" href=".'.$children_v->menu_to.'">'.$children_v->menu_name.'</a>
             </li>';
             }
             echo '
             <li class="nav-item dropdown">
-                <img src="http://localhost:8080/public/upload/'.$v->menu_icon.'" alt="">
+                <img src="#img#'.$v->menu_icon.'" alt="">
                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">'.$v->menu_name.'</a>
                 <ul class="dropdown-menu">
                     '.$con.'
                 </ul>
             </li>';
             }
-            }	?>
+            }foreach@
         </ul>
     </div>
     <!-- 信息区块展示 -->
@@ -51,14 +43,14 @@
             <div class="Top-Small-Button-Block">
                 <div class="Top-Small-Button-Item" data-bs-toggle="offcanvas" data-bs-target="#friendslist"
                     aria-controls="offcanvasRight">
-                    <img src="http://localhost:8080/public/upload/HomeImage/好友.png" alt="">
+                    <img src="#img#HomeImage/好友.png" alt="">
                 </div>
                 <div class="Top-Small-Button-Item" data-bs-toggle="offcanvas" data-bs-target="#noticeslist"
                     aria-controls="offcanvasRight">
-                    <img src="http://localhost:8080/public/upload/HomeImage/通知.png" alt="">
+                    <img src="#img#HomeImage/通知.png" alt="">
                 </div>
                 <div class="Top-Small-Button-Item">
-                    <img id="user_avatar" src="http://localhost:8080/public/upload/" alt="">
+                    <img id="user_avatar" src="#img#" alt="">
                 </div>
             </div>
         </div>
@@ -112,11 +104,11 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">
-                    版本介绍说明[发布时间:20<?php	echo $TK["versiondescriptionData"]["versiondescription_create_time"];	?>]</h4>
+                    版本介绍说明[发布时间:20$-TK["versiondescriptionData"]["versiondescription_create_time"]-$]</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <?php	echo $TK["versiondescriptionData"]["versiondescription_data"];	?>
+                $-TK["versiondescriptionData"]["versiondescription_data"]-$
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">关闭</button>
@@ -140,7 +132,7 @@
     </div>
     <!-- 菜单列表 -->
     <div class="Menu-Control-List">
-        <?php	
+        $(
         //*统计宽度
         $width = 100/count($TK["MenuList"]);
         foreach($TK["MenuList"] as $k => $v){
@@ -148,12 +140,12 @@
         <div class="Menu-Control-Item" style="width: '.$width.'vw;" width="'.$width.'">
             <div class="Menu-Control-Item-P">
                 <p class="Menu-Control-Item-P-data" to=".'.$v->menu_to.'">'.$v->menu_name.'</p>
-                <img class="Menu-Control-Item-P-img" src="http://localhost:8080/public/upload/'.$v->menu_icon.'" alt="">
+                <img class="Menu-Control-Item-P-img" src="#img#'.$v->menu_icon.'" alt="">
             </div>
         </div>
         ';
         }
-        	?>
+        )$
     </div>
 </div>
 
@@ -190,10 +182,8 @@
     </div>
 </div>
 
-<script src='http://localhost:8080/public/static/js/bootstrap.bundle.min.js'></script>
-<script src='http://localhost:8080/public/static/js/index.js'></script>
-<script src='http://localhost:8080/public/static/js/request.js'></script>
-<script src='http://localhost:8080/public/static/js/home.js'></script>
-</body>
-
-        </html>
+@script{#js#bootstrap.bundle.min.js}script@
+@script{#js#index.js}script@
+@script{#js#request.js}script@
+@script{#js#home.js}script@
+[/Start]

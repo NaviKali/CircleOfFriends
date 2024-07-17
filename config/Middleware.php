@@ -21,10 +21,10 @@ $userMiddleware = [
         // "\app\middleware\loginmiddleware",
         // "\app\middleware\\tokenmiddleware",
         // "\app\middleware\\routerunreal",
-        // "\app\middleware\phpversionmiddleware",
+        "\app\middleware\phpversionmiddleware",
         // "\app\middleware\localareanetworkrestrictionmiddleware",
         // "\app\middleware\useragentmiddleware",
-        // "\app\middleware\sessionmiddleware",
+        "\app\middleware\sessionmiddleware",
 ];
 
 /**

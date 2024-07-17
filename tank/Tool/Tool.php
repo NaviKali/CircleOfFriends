@@ -580,7 +580,7 @@ class Tool
                 }
                 $value = strtolower($value);
                 //截加."."
-                $symbol = '.';
+                $symbol = '';
                 $value = substr($value, 0, 5) . $symbol
                         . substr($value, 4, 9) . $symbol
                         . substr($value, 8, 13) . $symbol

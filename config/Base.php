@@ -167,7 +167,7 @@ $base->BatchInclude($Config);
 /**
  * 全局错误
  */
-OverallSituationErrorConfig();
+// OverallSituationErrorConfig();
 
 /**
  * !调用连接数据库

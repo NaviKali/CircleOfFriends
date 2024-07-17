@@ -8,6 +8,7 @@ use tank\View\ViewData;
 use function tank\Abort;
 use function tank\getCurrentUrl;
 use function tank\getRoot;
+use tank\View\Dom;
 
 class View
 {
@@ -46,10 +47,10 @@ class View
                 header("Content-Type:text/html");
                 $url = getRoot() . "views/";
                 self::$view = $view;
-                self::$viewPage = $url . $view . ".html";
+                self::$viewPage = $url . $view . ".php";
                 //?判断html是否存在
                 if (!file_exists(self::$viewPage)) {
-                        return Error::create("HTML不存在!", __FILE__, __LINE__);
+                        return Error::create("试图层PHP不存在!", __FILE__, __LINE__);
                 }
                 //*加载参数
                 $TK = $params;

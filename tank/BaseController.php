@@ -168,9 +168,9 @@ class BaseController
          * @param array $data 返回数据 选填 默认为 []
          * @return void
          */
-        public static function throwSuccess(string $message, array $data = []): void
+        public static function throwSuccess(string $message, array $data = []): mixed
         {
-                Success($message, $data);
+                return Success($message, $data);
         }
         /**
          * 抛出返回错误提示

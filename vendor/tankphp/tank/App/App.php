@@ -95,10 +95,20 @@ class App
     }
     /**
      * 获取解码后的参数
+     * @access public
+     * @param bool $isGetValue 是否只拿Value 选填 默认为 false
      * @return array
      */
-    public function getAppParams(): array
+    public function getAppParams(bool $isGetValue = false): array
     {
+        if ($isGetValue) {
+            $data = [];
+            foreach ($this->AppBaseParams as $k => $v) {
+                $data[] = $v;
+            }
+            return $data;
+        }
+
         return $this->AppBaseParams;
     }
 }

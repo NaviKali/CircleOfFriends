@@ -1,0 +1,44 @@
+body{
+    overflow: hidden;
+}
+.Login-Block {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: left;
+    align-items: end;
+}
+.Login-BackGround {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+}
+.Login-ShowBlock {
+    width: 25%;
+    margin: 50px;
+    height: 50%;
+    position: relative;
+    z-index: 10;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 5px 10px 20px 0px rgb(233, 232, 232);
+}
+.title{
+    text-align: center;
+    letter-spacing: 10px;
+    font-size: 25px;
+    padding-top: 10px;
+    color: var(--theme-color);
+}
+.Login-Input-Block{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.trademark{
+    color: red;
+    margin-top: 180px;
+    text-align: center;
+}
+.trademark p{
+    font-size: 15px;
+}

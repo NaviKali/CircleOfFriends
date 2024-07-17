@@ -1,36 +1,37 @@
 <?php
 /**
- * Token
+ * 模型层模拟
  */
 namespace app\model;
+use tank\Tool\Tool;
 
-class Token extends \tank\MD\MD
+class Versiondescription extends \tank\MD\MD
 {
+
         /**Key绑定 */
-        public static $Key = "token_id";
+        public static $Key = "versiondescription_id";
         /**Guid绑定 */
-        public static $Guid = ["token_guid", "token_value"];
+        public static $Guid = ["versiondescription_guid", "versiondescription_data"];
         /**显示字段 */
         public static $field = [
-                'token_guid' => self::SHOW,
-                'token_value' => self::SHOW,
-                'token_create_time' => self::SHOW,
-                'token_update_time' => self::SHOW,
+                'versiondescription_guid' => self::SHOW,
+                'versiondescription_data' => self::SHOW,
+                'versiondescription_create_time' => self::SHOW,
         ];
         /**写入字段 */
         public static $writefield = [
-                'token_value' => "token值"
+                'versiondescription_data' => "版本说明"
         ];
         /**开启软删除 */
         public static $OpenSoftDelete = true;
         /**软删除字段 */
-        public static $SoftDeleteField = "token_delete_time";
+        public static $SoftDeleteField = 'versiondescription_delete_time';
         /**开启其余字段写入 */
         public static $OpenOtherWriteField = true;
         /**其余字段写入 */
         public static $OtherWriteField = [
-                'create' => "token_create_time",
-                'update' => "token_update_time",
+                'create' => "versiondescription_create_time",
+                'update' => "versiondescription_update_time",
         ];
         /**开启业务姓名字段写入 */
         public static $UserNameWriteField = true;
@@ -43,7 +44,8 @@ class Token extends \tank\MD\MD
          */
         public static function onBeforeCreate()
         {
-                (new \app\model\Token)->select() ? die : null;
+                if((new Versiondescription())->select(true) != 0)
+                        Tool::abort("版本说明已经定义过了!");
         }
         /**
          * 添加后
@@ -69,12 +71,27 @@ class Token extends \tank\MD\MD
          */
         public static function onBeforeDelete()
         {
-                (new \app\model\Token)->select() ? null : die;
+
         }
         /**
          * 删除后
          */
         public static function onAfterDelete()
+        {
+
+        }
+        /**
+         * 查询前
+         */
+
+        public static function onBeforeSelect()
+        {
+
+        }
+        /**
+         * 查询后
+         */
+        public static function onAfterSelect()
         {
 
         }

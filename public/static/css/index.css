@@ -1,0 +1,27 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    text-decoration: none;
+    font-family: var(--unify-font);
+    font-weight: bold;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+:root {
+    /* 主题颜色 */
+    --theme-color: #0D6EFD;
+    /* 默认颜色 */
+    --index-color: "";
+    /* 统一字体 */
+    --unify-font: "宋体";
+    /* 菜单字体 */
+    --menu-font: "黑体";
+}
+
+.offcanvas-header{
+    border-bottom: 2px solid #e6e4e4;
+}
