@@ -1,5 +1,7 @@
 let myinfo = "";
 document.body.onload = function () {
+    MenuClickTo();
+    ClickTitleToHome()
     MakeModalClick('Introduction-description')
     myinfo = VerIsWriteUserInformation()
     fuzzyAnimate()
@@ -34,7 +36,7 @@ function VerIsWriteUserInformation() {
         login_guid: localStorage.getItem("LOGIN_GUID"),
     }, field).then((res) => {
         if (res.code == 200) {
-            document.getElementById("user_avatar").src = document.getElementById("user_avatar").src +res.data.user_avatar
+            document.getElementById("user_avatar").src = document.getElementById("user_avatar").src + res.data.user_avatar
             return res.data
         } else {
             MakeModalClick("WriteUserInformation");
@@ -50,9 +52,10 @@ function write_user_information_submit() {
         console.error("用户手机号长度不符合!");
         alert("用户手机号长度不符合!");
     } else {
-        var field = ["user_name", "user_sex", "user_phone", "user_information", "login_guid"];
+        var field = ["user_name", "user_avatar", "user_sex", "user_phone", "user_information", "login_guid"];
         RequestUrl(buildUrl("User/CreateUser"), "POST", {
             user_name: document.getElementById("user_name").value,
+            user_avatar: "/",
             user_sex: document.getElementById("user_sex").value,
             user_phone: document.getElementById("user_phone").value,
             user_information: document.getElementById("user_information").value,
@@ -99,7 +102,37 @@ function MenuControlPanelOperate() {
             Items[i].style.width = parseInt(Items[i].getAttribute("width")) + "vw"
         }
         Items[i].onclick = function () {
-            location.href = pdata[i].getAttribute("to")
+            location.href = pdata[i].getAttribute("to") + "?" + ToGetGuid()
         }
+    }
+}
+
+/**
+ * 菜单点击跳转
+ */
+function MenuClickTo() {
+    let links = document.getElementsByClassName("nav-link");
+    let items = document.getElementsByClassName("dropdown-item");
+    for (let i = 0; i < links.length; i++) {
+        links[i].onclick = function () {
+            if (links[i].getAttribute("href") != "#") {
+                location.href = links[i].getAttribute("href") + "?" + ToGetGuid()
+            }
+        }
+    }
+    for (let i = 0; i < items.length; i++) {
+        items[i].onclick = function () {
+            location.href = items[i].getAttribute("href") + "?" + ToGetGuid()
+        }
+
+    }
+}
+
+/**
+ * 点击标题返回首页
+ */
+function ClickTitleToHome() {
+    document.getElementById("Nav-Title").onclick = function () {
+        location.href = "./HomePage?" + ToGetGuid()
     }
 }

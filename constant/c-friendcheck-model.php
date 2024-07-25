@@ -1,0 +1,2 @@
+<?php
+const FRIENDCHECKMODEL_CREATE_SUCCESS = "好友申请成功!";

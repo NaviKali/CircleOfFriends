@@ -6,13 +6,13 @@
 <div class="Home-Block">
     <!-- 左边导航栏 -->
     <div class="Top-Nav">
-        <p class="Nav-Title">$-TK["NavTitle"]-$</p>
+        <p class="Nav-Title" id="Nav-Title">$-TK["NavTitle"]-$</p>
         <ul class="nav nav-pills flex-column">
             @foreach($TK["MenuList"] as $k => $v){
             if($v->children == []){
             echo ' <li class="nav-item">
                 <img src="#img#'.$v->menu_icon.'" alt="">
-                <a class="nav-link" href=".'.$v->menu_to.'">'.$v->menu_name.'</a>
+                <span class="nav-link" href=".'.$v->menu_to.'">'.$v->menu_name.'</span>
             </li>';
             }else
             {
@@ -21,7 +21,7 @@
             {
             $con.='<li>
                 <img src="#img#'.$children_v->menu_icon.'" alt="">
-                <a class="dropdown-item" href=".'.$children_v->menu_to.'">'.$children_v->menu_name.'</a>
+                <span class="dropdown-item" href=".'.$children_v->menu_to.'">'.$children_v->menu_name.'</span>
             </li>';
             }
             echo '
@@ -54,8 +54,26 @@
                 </div>
             </div>
         </div>
+        <!-- 内容展示 -->
+        <div class="DataShow">
+
+
+        </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -73,8 +91,6 @@
         ...
     </div>
 </div>
-
-
 <!-- 好友列表 -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="friendslist" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
@@ -82,7 +98,10 @@
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        ...
+        <div class="Top-Small-Button">
+            <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                data-bs-target="#addfriendlist">好友添加列表</button>
+        </div>
     </div>
 </div>
 
@@ -93,8 +112,52 @@
 
 
 
-
-
+<!-- 好友添加列表 -->
+<div class="modal fade" id="addfriendlist">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">好友添加申请列表</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <ul class="list-group">
+                    @foreach($TK["AddFriendsList"] as $k => $v){
+                    $str = $v->MySend ? '
+                    <p>'.$v->friendcheck_status.'</p>
+                    ' : '
+                    <button type="button" class="btn btn-success">同意</button>
+                    <button type="button" class="btn btn-danger">拒绝</button>
+                    ';
+                    $content = $v->MySend ? '
+                    <p>你想与['.$v->user["user_name"].']成为好友!</p>
+                    ' :'
+                    <p>['.$v->user["user_name"].']想与你成为好友!</p>
+                    ';
+                    echo '
+                    <li class="list-group-item">
+                        <div class="friends-item-card">
+                            <div>
+                                <img src="#img#'.$v->user['user_avatar'].'" alt="">
+                                '.$content.'
+                                <p>发起时间:20'.$v->friendcheck_create_time.'</p>
+                            </div>
+                            <div>'.
+                                $str
+                                .'
+                            </div>
+                        </div>
+                    </li>
+                    ';
+                    }foreach@
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -116,15 +179,6 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
 <!-- 菜单控制面板 -->
 <div class="Menu-Control-Panel" id="Menu-Control-Panel">
     <!-- 背景 -->
@@ -148,8 +202,6 @@
         )$
     </div>
 </div>
-
-
 <!-- 用户信息填写弹窗 -->
 <div class="modal fade" id="WriteUserInformation">
     <div class="modal-dialog modal-fullscreen">

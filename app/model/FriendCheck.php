@@ -4,52 +4,47 @@
  */
 namespace app\model;
 
-class User extends \tank\MD\MD
+class FriendCheck extends \tank\MD\MD
 {
         /**
-         * 用户性别类型
+         * 好友申请状态
          * @access public
          * @static
          * @var array
          */
-        public static array $UserSexType = [
-                "1" => "男",
-                "2" => "女",
+        public static array $FriendCheckStatus = [
+                "1" => "待同意",
+                "2" => "成功同意",
+                "3" => "拒绝同意",
         ];
 
         /**Key绑定 */
-        public static $Key = "user_id";
+        public static $Key = "friendcheck_id";
         /**Guid绑定 */
-        public static $Guid = ["user_guid", "user_name"];
+        public static $Guid = ["friendcheck_guid", "friendcheck_send_name"];
         /**显示字段 */
         public static $field = [
-                'user_guid' => self::SHOW,
-                'user_name' => self::SHOW,
-                'user_avatar' => self::SHOW,
-                'user_sex' => self::SHOW,
-                'user_phone' => self::SHOW,
-                'user_information' => self::SHOW,
-                'login_guid' => self::SHOW,
+                'friendcheck_send_name' => self::SHOW,
+                'friendcheck_receiv_name' => self::SHOW,
+                'friendcheck_status' => self::SHOW,
+                'friendcheck_create_time' => self::SHOW,
         ];
         /**写入字段 */
         public static $writefield = [
-                'user_name' => "用户姓名",
-                'user_avatar' => "用户头像",
-                'user_sex' => "用户性别",
-                'user_phone' => "用户手机号",
-                'user_information' => "用户信息",
-                "login_guid" => "登录Guid",
+                'friendcheck_send_name' => "好友申请发送用户",
+                'friendcheck_receiv_name' => "好友申请接收用户",
+                'friendcheck_status' => "好友申请状态",
         ];
         /**开启软删除 */
         public static $OpenSoftDelete = true;
         /**软删除字段 */
-        public static $SoftDeleteField = "user_delete_time";
+        public static $SoftDeleteField = "friendcheck_delete_time";
         /**开启其余字段写入 */
         public static $OpenOtherWriteField = true;
         /**其余字段写入 */
         public static $OtherWriteField = [
-                'create' => "user_create_time",
-                'update' => "user_update_time",
+                'create' => "friendcheck_create_time",
+                'update' => "friendcheck_update_time",
         ];
         /**开启业务姓名字段写入 */
         public static $UserNameWriteField = true;
@@ -102,12 +97,14 @@ class User extends \tank\MD\MD
 
         public static function onBeforeSelect()
         {
+
         }
         /**
          * 查询后
          */
         public static function onAfterSelect()
         {
+
         }
 
 }
